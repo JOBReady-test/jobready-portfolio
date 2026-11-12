@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>프로젝트 상세</title>
+<!-- 글꼴 Pretendard 1.3.9 (프론트와 같음) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<!-- 색 · 글자 · 간격은 JOBReady 프론트(원티드 몽타주 + 합격 그린, PRD 10.2)와 같은 값 -->
+<style>
+:root{
+  --ink-body:oklch(0.259 0.01 273);--ink-label:oklch(0.298 0.01 273);--line:oklch(0.521 0.018 273);
+  --background:oklch(0.972 0.002 286);--card:oklch(1 0 0);
+  --foreground:color-mix(in oklab,var(--ink-body) 88%,white);
+  --foreground-strong:oklch(0.148 0.004 277);
+  --muted-foreground:color-mix(in oklab,var(--ink-label) 61%,white);
+  --foreground-subtle:color-mix(in oklab,var(--ink-label) 43%,white);
+  --foreground-disabled:color-mix(in oklab,var(--ink-label) 28%,white);
+  --muted:oklch(0.961 0.002 286);
+  --fill:color-mix(in oklab,var(--line) 10%,transparent);
+  --border:color-mix(in oklab,var(--line) 8%,transparent);
+  --border-outline:color-mix(in oklab,var(--line) 16%,transparent);
+  --border-strong:color-mix(in oklab,var(--line) 35%,transparent);
+  /* 합격 그린 (PRD 10.2) */
+  --primary:oklch(0.47 0.1 163);--primary-foreground:oklch(1 0 0);
+  --highlight:oklch(0.955 0.035 163);--highlight-foreground:oklch(0.4 0.09 163);
+  --highlight-weak:oklch(0.985 0.012 163);
+  --interaction-hover:oklch(0.205 0.004 286 / 0.075);--interaction-active:oklch(0.205 0.004 286 / 0.18);
+  --overlay:oklch(0 0 0);
+  --shadow-raise:0 1px 2px oklch(0.155 0 0 / 0.06),0 1px 3px oklch(0 0 0 / 0.05);
+  --font-sans:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --font-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--background);color:var(--foreground);font-family:var(--font-sans);font-size:16px;line-height:1.5;letter-spacing:.0057em;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p,ul,ol,dl,dd,figure{margin:0}
+ul,ol{padding:0;list-style:none}
+a{color:inherit;text-decoration:none}
+img{display:block}
+button{font:inherit;letter-spacing:inherit}
+/* 몽타주 타입 스케일 (프론트 app.css @theme) */
+.t-caption1{font-size:12px;line-height:1.334;letter-spacing:.0252em}
+.t-label2{font-size:13px;line-height:1.385;letter-spacing:.0194em}
+.t-label1{font-size:14px;line-height:1.429;letter-spacing:.0145em}
+.t-body2{font-size:15px;line-height:1.467;letter-spacing:.0096em}
+.t-headline1{font-size:18px;line-height:1.445;letter-spacing:-.002em}
+.t-heading2{font-size:20px;line-height:1.4;letter-spacing:-.012em}
+.t-title3{font-size:24px;line-height:1.334;letter-spacing:-.023em}
+.c-strong{color:var(--foreground-strong)}.c-muted{color:var(--muted-foreground)}.c-subtle{color:var(--foreground-subtle)}
+.c-primary{color:var(--primary)}
+.w5{font-weight:500}.w6{font-weight:600}.w7{font-weight:700}
+.num{font-variant-numeric:tabular-nums}
+.mono{font-family:var(--font-mono)}
+.pre{white-space:pre-line}
+.trunc{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.wrap{max-width:1280px;margin:0 auto;padding:40px 24px 96px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px}
+/* 섹션 머리: 제목 + 헤어라인, 선 앞쪽에 primary 짧은 선 (프론트 SectionHead · TemplateSection) */
+.sh{display:flex;align-items:center;gap:16px}
+.sh h2{flex:none;font-weight:700;color:var(--foreground-strong)}
+.sh i{position:relative;flex:1;height:1px;background:var(--border)}
+.sh i::before{content:"";position:absolute;left:0;top:-1px;height:2px;border-radius:999px;background:var(--primary)}
+/* 몽타주 button: 굵기 700, solid는 hover 때 인터랙션 층 */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;flex:none;height:40px;padding:0 20px;border:1px solid transparent;border-radius:10px;font-size:15px;font-weight:700;letter-spacing:.006em;white-space:nowrap;cursor:pointer;transition:background-color .15s,border-color .15s,color .15s}
+.btn svg{width:16px;height:16px;flex:none}
+.btn-p{background:var(--primary);color:var(--primary-foreground)}
+.btn-p:hover{background-image:linear-gradient(var(--interaction-hover),var(--interaction-hover))}
+.btn-p:active{background-image:linear-gradient(var(--interaction-active),var(--interaction-active))}
+.btn-o{border-color:var(--border-outline);background:var(--card);color:var(--foreground)}
+.btn-o:hover{background:var(--muted)}
+.btn-sm{height:32px;padding:0 14px;border-radius:8px;font-size:14px}
+.btn-sm svg{width:14px;height:14px}
+.btn-lg{height:44px}
+.btn:disabled{cursor:default;background:var(--fill);color:var(--foreground-disabled);background-image:none}
+.btn:focus-visible{outline:none;box-shadow:0 0 0 3px color-mix(in oklch,var(--primary) 30%,transparent)}
+/* 몽타주 chip brand 34px */
+.chip{display:inline-flex;align-items:center;height:34px;padding:0 14px;border-radius:999px;background:var(--highlight);color:var(--highlight-foreground);font-size:13px;font-weight:600;letter-spacing:.0194em}
+/* 확대 보기 */
+.zoom{position:fixed;inset:0;z-index:40;display:flex;align-items:center;justify-content:center;padding:32px;background:color-mix(in oklch,var(--overlay) 86%,transparent);cursor:zoom-out}
+.zoom img{max-width:min(1100px,100%);max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:12px}
+.zoom button{position:absolute;top:20px;right:20px;display:flex;align-items:center;justify-content:center;width:44px;height:44px;border:0;border-radius:999px;background:color-mix(in oklch,white 10%,transparent);color:#fff;cursor:pointer}
+.zoom button:hover{background:color-mix(in oklch,white 20%,transparent)}
+.zoom button svg{width:20px;height:20px}
+
+.wrap{max-width:1180px}
+.article{display:flex;flex-direction:column;gap:48px}
+.sec{display:flex;flex-direction:column;gap:16px}
+.sh h2{font-size:18px;line-height:1.445;letter-spacing:-.002em}
+.sh i::before{width:40px}
+/* ① 히어로: 왼쪽 4px primary (프론트와 같음) */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 360px;align-items:center;gap:40px;padding:40px;border-left:4px solid var(--primary)}
+.hero-l{display:flex;flex-direction:column;gap:16px;min-width:0}
+.meta{display:flex;align-items:center;gap:8px}
+.meta .bar{color:var(--border-strong)}
+.hero h1{font-size:30px;line-height:1.375;font-weight:700;color:var(--foreground-strong);letter-spacing:-.02em}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+/* 사진 칸: 비면 점선 + 라벨 (프론트 PhotoBox) */
+.photo{position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:12px;text-align:center;font-size:12px;font-weight:500}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;cursor:zoom-in}
+.photo.empty{border:1px dashed var(--border-strong);background:var(--card);color:var(--foreground-subtle)}
+.ar-hero{aspect-ratio:4/3}.ar-shot{aspect-ratio:16/10}
+/* ② 핵심 흐름 */
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.step{display:flex;flex-direction:column;gap:4px;padding:12px 16px;border:1px solid var(--border);border-left:3px solid var(--primary);border-radius:12px;background:var(--card)}
+.step small{font-size:12px;font-weight:700;color:var(--primary);font-variant-numeric:tabular-nums}
+.arrow{width:16px;height:16px;color:var(--foreground-subtle)}
+/* ③ 핵심 설계 */
+.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.dc{display:flex;flex-direction:column;gap:8px;padding:20px;border-radius:12px}
+.dc p{line-height:1.625}
+/* ④ 트러블슈팅 */
+.tbox{padding:8px 28px;border-radius:12px}
+.trow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:24px}
+.trow.head{padding:12px 0}
+.trow.item{padding:16px 0;border-top:1px solid var(--border)}
+.trow .why{display:flex;flex-direction:column;gap:4px;line-height:1.625}
+.trow .why b{margin-right:6px;color:var(--primary)}
+/* ⑤ 결과 및 화면 */
+.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.shot{display:flex;flex-direction:column;gap:8px}
+.shot .photo{box-shadow:var(--shadow-raise)}
+.cap{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.cap button{display:inline-flex;align-items:center;gap:4px;padding:0;border:0;background:none;color:var(--primary);font-weight:600;cursor:pointer}
+.cap button:hover{text-decoration:underline}
+.cap button svg{width:14px;height:14px}
+@media (max-width:760px){
+  .wrap{padding:24px 16px 64px}
+  .hero{grid-template-columns:minmax(0,1fr);padding:24px}
+  .g3,.g2,.trow{grid-template-columns:minmax(0,1fr)}
+  .trow{gap:8px}.trow.head{display:none}.tbox{padding:4px 20px}
+  .hero h1{font-size:24px}
+}
+</style>
+<script src="../_runtime/preact.min.js"></script>
+<script src="../_runtime/dc-lite.js"></script>
+</head>
+<body>
+<div id="dc-root"></div>
+<script>window.__DC_TREE = [{"t":"main","a":{"class":"wrap"},"c":[{"t":"article","a":{"class":"article"},"c":[{"t":"section","a":{"class":"card hero"},"c":[{"t":"div","a":{"class":"hero-l"},"c":[{"t":"p","a":{"class":"meta t-label2 w5 c-muted"},"c":[{"t":"sc-if","a":{"value":"{{hasKind}}"},"c":[{"t":"span","a":{"class":"w6 c-primary"},"c":["{{kind}}"]}]},{"t":"sc-if","a":{"value":"{{hasBar}}"},"c":[{"t":"span","a":{"class":"bar","aria-hidden":"true"},"c":["|"]}]},{"t":"sc-if","a":{"value":"{{hasPeriod}}"},"c":[{"t":"span","a":{"class":"num"},"c":["{{period}}"]}]}]},{"t":"h1","c":["{{titleLead}}",{"t":"br"},"{{titleRest}}"]},{"t":"ul","a":{"class":"chips"},"c":[{"t":"sc-for","a":{"list":"{{techs}}","as":"t"},"c":[{"t":"li","a":{"class":"chip"},"c":["{{t}}"]}]}]},{"t":"sc-if","a":{"value":"{{hasGithub}}"},"c":[{"t":"div","c":[{"t":"a","a":{"class":"btn btn-o btn-sm","href":"{{githubUrl}}","target":"_blank","rel":"noopener noreferrer"},"c":["GitHub",{"t":"svg","a":{"class":"","viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","stroke-width":"2","stroke-linecap":"round","stroke-linejoin":"round","aria-hidden":"true"},"c":[{"t":"path","a":{"d":"M15 3h6v6"}},{"t":"path","a":{"d":"M10 14 21 3"}},{"t":"path","a":{"d":"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"}}]}]}]}]}]},{"t":"div","c":[{"t":"sc-if","a":{"value":"{{hasHero}}"},"c":[{"t":"div","a":{"class":"photo ar-hero"},"c":[{"t":"img","a":{"src":"{{heroSrc}}","alt":"{{heroAlt}}","onClick":"{{openHero}}"}}]}]},{"t":"sc-if","a":{"value":"{{showHeroEmpty}}"},"c":[{"t":"div","a":{"class":"photo empty ar-hero"},"c":[{"t":"span","c":["[히어로 이미지 4:3]"]}]}]}]}]},{"t":"sc-if","a":{"value":"{{hasFlow}}"},"c":[{"t":"section","a":{"class":"sec"},"c":[{"t":"div","a":{"class":"sh"},"c":[{"t":"h2","c":["핵심 흐름"]},{"t":"i","a":{"aria-hidden":"true"}}]},{"t":"ol","a":{"class":"flow"},"c":[{"t":"sc-for","a":{"list":"{{flow}}","as":"f"},"c":[{"t":"li","a":{"class":"step t-body2 w5 c-strong"},"c":[{"t":"small","c":["{{f.no}}"]},"{{f.label}}"]},{"t":"sc-if","a":{"value":"{{f.arrow}}"},"c":[{"t":"svg","a":{"class":"arrow","viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","stroke-width":"2","stroke-linecap":"round","stroke-linejoin":"round","aria-hidden":"true"},"c":[{"t":"path","a":{"d":"m9 18 6-6-6-6"}}]}]}]}]}]}]},{"t":"sc-if","a":{"value":"{{hasDesign}}"},"c":[{"t":"section","a":{"class":"sec"},"c":[{"t":"div","a":{"class":"sh"},"c":[{"t":"h2","c":["핵심 설계"]},{"t":"i","a":{"aria-hidden":"true"}}]},{"t":"div","a":{"class":"g3"},"c":[{"t":"sc-for","a":{"list":"{{design}}","as":"d"},"c":[{"t":"div","a":{"class":"card dc"},"c":[{"t":"h3","a":{"class":"w7 c-strong"},"c":["{{d.title}}"]},{"t":"p","a":{"class":"t-body2 c-muted"},"c":["{{d.description}}"]}]}]}]}]}]},{"t":"sc-if","a":{"value":"{{hasTrouble}}"},"c":[{"t":"section","a":{"class":"sec"},"c":[{"t":"div","a":{"class":"sh"},"c":[{"t":"h2","c":["트러블슈팅"]},{"t":"i","a":{"aria-hidden":"true"}}]},{"t":"div","a":{"class":"card tbox"},"c":[{"t":"div","a":{"class":"trow head t-caption1 w6 c-subtle"},"c":[{"t":"span","c":["문제 상황"]},{"t":"span","c":["원인 및 해결"]}]},{"t":"sc-for","a":{"list":"{{troubleshooting}}","as":"t"},"c":[{"t":"div","a":{"class":"trow item"},"c":[{"t":"p","a":{"class":"w6 c-strong"},"c":["{{t.problem}}"]},{"t":"div","a":{"class":"why t-body2"},"c":[{"t":"p","c":[{"t":"b","c":["원인"]},"{{t.cause}}"]},{"t":"p","c":[{"t":"b","c":["해결"]},"{{t.solution}}"]}]}]}]}]}]}]},{"t":"sc-if","a":{"value":"{{hasScreens}}"},"c":[{"t":"section","a":{"class":"sec"},"c":[{"t":"div","a":{"class":"sh"},"c":[{"t":"h2","c":["결과 및 화면"]},{"t":"i","a":{"aria-hidden":"true"}}]},{"t":"div","a":{"class":"g2"},"c":[{"t":"sc-for","a":{"list":"{{screens}}","as":"s"},"c":[{"t":"figure","a":{"class":"shot"},"c":[{"t":"sc-if","a":{"value":"{{s.hasImage}}"},"c":[{"t":"div","a":{"class":"photo ar-shot"},"c":[{"t":"img","a":{"src":"{{s.src}}","alt":"{{s.label}}","onClick":"{{s.open}}"}}]}]},{"t":"sc-if","a":{"value":"{{s.showEmpty}}"},"c":[{"t":"div","a":{"class":"photo empty ar-shot"},"c":[{"t":"span","c":["[결과 화면 · {{s.label}}]"]}]}]},{"t":"figcaption","a":{"class":"cap t-label2 c-muted"},"c":[{"t":"span","c":["{{s.label}}"]},{"t":"sc-if","a":{"value":"{{s.hasImage}}"},"c":[{"t":"button","a":{"type":"button","onClick":"{{s.open}}"},"c":[{"t":"svg","a":{"class":"","viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","stroke-width":"2","stroke-linecap":"round","stroke-linejoin":"round","aria-hidden":"true"},"c":[{"t":"path","a":{"d":"M15 3h6v6"}},{"t":"path","a":{"d":"M9 21H3v-6"}},{"t":"path","a":{"d":"M21 3l-7 7"}},{"t":"path","a":{"d":"M3 21l7-7"}}]},"미리보기"]}]}]}]}]}]}]}]}]}]},{"t":"sc-if","a":{"value":"{{hasZoom}}"},"c":[{"t":"div","a":{"class":"zoom","role":"dialog","aria-label":"확대 이미지","onClick":"{{closeZoom}}"},"c":[{"t":"img","a":{"src":"{{zoom}}","alt":""}},{"t":"button","a":{"type":"button","aria-label":"닫기","onClick":"{{closeZoom}}"},"c":[{"t":"svg","a":{"class":"","viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","stroke-width":"2","stroke-linecap":"round","stroke-linejoin":"round","aria-hidden":"true"},"c":[{"t":"path","a":{"d":"M18 6 6 18"}},{"t":"path","a":{"d":"m6 6 12 12"}}]}]}]}]}];
+window.__DC_DEFAULTS = {};</script>
+<script>
+// 프로젝트 틀 — 읽기 화면 (프론트 components/projects/project-view.tsx와 같은 구조 · 색).
+// 데이터 = PortfolioDetail.json (window.__PAGE_DATA). 사진은 http(s) · data: · images/… 주소만 그린다
+const SAMPLE_PROJECT = {
+  kind: "개인 프로젝트",
+  period: "2026.05 – 2026.06",
+  title: ["CineFlow", "영화 예매 관리 시스템"],
+  techs: ["Java 17", "Spring Boot", "JPA", "MySQL"],
+  github_url: "https://github.com",
+  hero_image: "",
+  flow: ["영화 · 상영관 선택", "좌석 선점", "결제 승인"],
+  design: [{ title: "좌석 선점 TTL", description: "결제 전 좌석을 잠시 잡아 둡니다." }],
+  troubleshooting: [{ problem: "같은 좌석이 두 번 예매됨", cause: "조회와 갱신 사이의 경쟁", solution: "비관적 락" }],
+  screens: [{ file: null, label: "예매 화면" }]
+};
+</script>
+<script>window.__PAGE_DATA = {"id": "cs50w-evently", "kind": "", "period": "2026.07 – 2026.11", "title": ["Evently", ""], "summary": ["RSVP 상태와 채팅 참가자를 시그널로 동기화해 참여 권한과 데이터 정합성을 함께 관리했습니다.", "Django-Q 스케줄을 통해 오래된 이벤트 삭제와 상태 갱신을 자동화해 운영 부담을 줄였습니다.", "fetch 기반 비동기 토글로 작업 완료 처리를 새로고침 없이 수행하도록 개선했습니다."], "techs": ["Python", "Django", "JavaScript", "HTML", "CSS", "Django-Q", "Redis", "debug_toolbar", "widget_tweaks"], "github_url": "https://github.com/JOBReady-test/cs50w-evently", "hero_image": "", "download_filename": "cs50w-evently-portfolio.html", "flow": ["이벤트 생성·수정·삭제 및 이벤트 상세 관리", "Task 완료 상태를 비동기로 토글하는 UI", "RSVP 상태에 따라 채팅 참가자를 자동 갱신", "이벤트 생성 시 채팅방과 참가자 초기화", "오래된 이벤트 자동 삭제 및 종료 이벤트 상태 갱신"], "design": [{"title": "아키텍처", "description": "단일 앱 중심의 Django 구조로, `evently/urls.py`에서 `accounts/`는 Django 기본 인증 URL에 위임하고 루트 경로는 `events` 앱으로 라우팅합니다. 핵심 비즈니스 로직은 `events` 앱에 집중되어 있으며, `signals.py`로 Event/RSVP 저장 후 후처리를 처리하고 `tasks.py`와 Django-Q 스케줄로 오래된 이벤트 삭제 및 상태 갱신을 수행합니다. 프론트엔드에서는 `events/static/events/js/index.js`가 fetch API를 사용해 작업 완료 토글을 비동기 처리합니다."}, {"title": "기술 선택", "description": "이 프로젝트는 서버 렌더링 중심의 Django 구조를 유지하면서도, 시그널과 스케줄러를 분리해 도메인 후처리와 유지보수 작업을 요청 경로 밖으로 빼는 방향으로 설계되었습니다. `events/signals.py`에서는 Event 저장 시 채팅과 참가자 초기화를, RSVP 저장 시 채팅 참가자 동기화를 처리해 데이터 불일치를 줄였고, `events/tasks.py`에서는 만료 이벤트 처리 로직을 분리해 운영 규칙을 코드로 고정했습니다. 또한 `events/static/events/js/index.js`에서 fetch를 사용해 Task 완료 토글을 비동기로 처리해 기존 템플릿 구조를 크게 바꾸지 않으면서 상호작용성을 보강했습니다."}], "troubleshooting": [{"problem": "RSVP 상태와 채팅 참가자 목록이 분리되면 실제 참여 가능 여부와 데이터가 어긋날 수 있습니다.", "cause": "RSVP 변경이 채팅 참가자 갱신과 별도로 관리되면, 응답 상태는 바뀌었지만 채팅 권한이 반영되지 않는 불일치가 생길 수 있습니다.", "solution": "`events/signals.py`에서 RSVP 저장 시 이벤트의 채팅방을 찾아 상태에 따라 `ChatParticipant`를 추가하거나 삭제하도록 자동 동기화했습니다. 결과: RSVP와 채팅 참여 상태를 하나의 규칙으로 묶어 데이터 정합성을 유지하도록 만들었습니다."}, {"problem": "오래된 이벤트와 연관 데이터가 누적되면 운영 부담과 데이터 오염이 커집니다.", "cause": "이벤트, 작업, RSVP, 채팅 메시지 같은 연관 데이터가 사용자 요청만으로 정리되지 않으면 시간이 지날수록 불필요한 데이터가 쌓입니다.", "solution": "`events/tasks.py`에 오래된 이벤트 삭제와 상태 갱신 로직을 분리하고, `events/apps.py`에서 Django-Q 스케줄로 주기 실행되도록 등록했습니다. 결과: 정리 작업을 사용자 요청 경로에서 분리해 유지보수 자동화를 구현했습니다."}, {"problem": "Task 완료 처리를 페이지 전체 새로고침 방식으로만 하면 UX가 불편합니다.", "cause": "상태 변경을 서버 렌더링 폼 제출에만 의존하면 사용자는 매번 전체 페이지를 다시 로드해야 합니다.", "solution": "`events/static/events/js/index.js`에서 fetch로 완료 토글 요청을 보내고 응답에 따라 이동 또는 새로고침을 처리했습니다. 결과: 서버 렌더링 구조를 유지하면서도 작업 완료를 더 빠르게 처리할 수 있게 했습니다."}], "screens": []};</script>
+<script>
+
+class Component extends DCLogic {
+  constructor(p){ super(p); this.state = { zoom: "" }; }
+  componentDidMount() {
+    // 확대 보기는 Esc로도 닫는다
+    try { window.addEventListener("keydown", (e) => { if (e.key === "Escape" && this.state.zoom) this.setState({ zoom: "" }); }); } catch (e) {}
+  }
+  renderVals() {
+    const page = window.__PAGE_DATA || SAMPLE_PROJECT;
+    const text = (v) => (typeof v === "string" ? v : "");
+    const title = Array.isArray(page.title) ? page.title : [text(page.title)];
+    const imageAddress = (value) => {
+      const v = text(value);
+      return /^(https?:|data:image\/)/i.test(v) || v.indexOf("images/") >= 0 ? v : "";
+    };
+    const open = (src) => () => { if (src) this.setState({ zoom: src }); };
+    const kind = text(page.kind), period = text(page.period);
+    const github = text(page.github_url);
+    const heroSrc = imageAddress(page.hero_image);
+    const flow = (page.flow || []).map(text);
+    const screens = (page.screens || []).map((s) => {
+      const src = imageAddress(s && s.file);
+      return { label: text(s && s.label), src: src, hasImage: !!src, showEmpty: !src, open: open(src) };
+    });
+    if (typeof document !== "undefined" && title[0]) document.title = [title[0], title[1]].filter(Boolean).join(" ");
+    return {
+      kind: kind, hasKind: !!kind, period: period, hasPeriod: !!period, hasBar: !!(kind && period),
+      titleLead: text(title[0]), titleRest: text(title[1]),
+      techs: (page.techs || []).map(text).filter(Boolean),
+      hasGithub: /^https?:\/\//i.test(github), githubUrl: github,
+      heroSrc: heroSrc, hasHero: !!heroSrc, showHeroEmpty: !heroSrc,
+      heroAlt: [title[0], title[1]].filter(Boolean).join(" ") + " 히어로 이미지",
+      openHero: open(heroSrc),
+      flow: flow.map((label, i) => ({ no: String(i + 1).padStart(2, "0"), label: label, arrow: i < flow.length - 1 })),
+      hasFlow: flow.length > 0,
+      design: page.design || [], hasDesign: (page.design || []).length > 0,
+      troubleshooting: page.troubleshooting || [], hasTrouble: (page.troubleshooting || []).length > 0,
+      screens: screens, hasScreens: screens.length > 0,
+      zoom: this.state.zoom, hasZoom: !!this.state.zoom,
+      closeZoom: () => this.setState({ zoom: "" })
+    };
+  }
+}
+
+window.__DC_COMPONENT = Component;
+window.__dcStart();
+</script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+{
+  "name": "백엔드",
+  "owner": "JOBReady-test",
+  "footer": "© 2026 JOBReady-test",
+  "home": {
+    "headline": [
+      "Django와 React 기반으로 이벤트와 과제 관리 서비스를 구현한 백엔드 지원자입니다.",
+      "비동기 처리, 인증, 상태 관리 중심의 프로젝트 경험으로 안정적인 서비스 흐름을 설계했습니다."
+    ],
+    "summary": [
+      "Evently에서는 이벤트 생성·수정·삭제와 상세 관리, RSVP에 따른 채팅 참가자 자동 갱신, 오래된 이벤트 정리와 종료 상태 갱신을 구현했습니다.",
+      "Student Task Manager에서는 JWT 인증 기반의 접근 제어와 과제 CRUD, 대시보드 집계를 통해 사용자 흐름과 데이터 관리를 구성했습니다."
+    ],
+    "stats": [
+      {
+        "value": 2,
+        "label": "프로젝트"
+      },
+      {
+        "value": 0,
+        "label": "수상 경험"
+      },
+      {
+        "value": 1,
+        "label": "활동"
+      }
+    ],
+    "photo_text": "J",
+    "photo": "images/photo.jpg",
+    "photos": [],
+    "location": "서울 광진고",
+    "position": "백엔드"
+  },
+  "about": {
+    "title": "사용 기술 및 경험",
+    "description": "이 포트폴리오에 입력한 기술과 경험입니다.",
+    "groups": [
+      {
+        "name": "기술 스택",
+        "description": "이 포트폴리오에 입력한 기술입니다.",
+        "rows": [
+          {
+            "name": "Python",
+            "experience": ""
+          },
+          {
+            "name": "TypeScript",
+            "experience": ""
+          },
+          {
+            "name": "Java",
+            "experience": ""
+          },
+          {
+            "name": "HTML",
+            "experience": ""
+          },
+          {
+            "name": "CSS",
+            "experience": ""
+          },
+          {
+            "name": "Jinja",
+            "experience": ""
+          },
+          {
+            "name": "JavaScript",
+            "experience": ""
+          }
+        ]
+      }
+    ],
+    "main_tech": [
+      {
+        "name": "Python",
+        "color": "#2443C4"
+      },
+      {
+        "name": "TypeScript",
+        "color": "#2443C4"
+      },
+      {
+        "name": "Java",
+        "color": "#2443C4"
+      },
+      {
+        "name": "HTML",
+        "color": "#2443C4"
+      },
+      {
+        "name": "CSS",
+        "color": "#2443C4"
+      },
+      {
+        "name": "Jinja",
+        "color": "#2443C4"
+      }
+    ],
+    "awards": []
+  },
+  "history": {
+    "title": "이력 및 활동",
+    "description": "학력은 내정보이고, 활동과 자격은 입력한 내용입니다.",
+    "activities_title": "활동 및 경험",
+    "activities_description": "입력한 활동입니다.",
+    "activities": [
+      {
+        "period": "2026.02 - 2026.10",
+        "name": "졸업작품",
+        "role": "ai 서버 개발",
+        "items": []
+      }
+    ],
+    "education": {
+      "major": "컴퓨터공학",
+      "school": "광운대학교 · 대학교(4년) · 휴학중",
+      "period": ""
+    },
+    "certificates": [
+      {
+        "name": "정보처리기사",
+        "org": "Qnet",
+        "date": "2025.7"
+      }
+    ]
+  },
+  "projects": [
+    {
+      "id": "cs50w-evently",
+      "detail_page": "2/PortfolioDetail.html",
+      "github_url": "https://github.com/JOBReady-test/cs50w-evently",
+      "language": "Python",
+      "language_color": "#2443C4",
+      "cover_bg": "#1F2430",
+      "cover_ink": "#F4F5F2",
+      "main_tech": "Python",
+      "period": "2026.07 – 2026.11",
+      "title": "Evently",
+      "stack": "Python · Django · JavaScript · HTML · CSS · Django-Q · Redis · debug_toolbar · widget_tweaks",
+      "summary": [
+        "RSVP 상태와 채팅 참가자를 시그널로 동기화해 참여 권한과 데이터 정합성을 함께 관리했습니다.",
+        "Django-Q 스케줄을 통해 오래된 이벤트 삭제와 상태 갱신을 자동화해 운영 부담을 줄였습니다.",
+        "fetch 기반 비동기 토글로 작업 완료 처리를 새로고침 없이 수행하도록 개선했습니다."
+      ],
+      "cover_image": ""
+    },
+    {
+      "id": "student-task-manager",
+      "detail_page": "3/PortfolioDetail.html",
+      "github_url": "https://github.com/JOBReady-test/Student-Task-Manager",
+      "language": "HTML",
+      "language_color": "#2443C4",
+      "cover_bg": "#1F2430",
+      "cover_ink": "#F4F5F2",
+      "main_tech": "HTML",
+      "period": "2026.03 – 2026.11",
+      "title": "Student Task Manager",
+      "stack": "HTML · CSS · JavaScript · React · Express · MySQL · JWT · bcrypt",
+      "summary": [
+        "인증 미들웨어와 보호 라우트를 분리해 로그인되지 않은 사용자의 접근을 명확하게 차단합니다.",
+        "과제의 완료일과 상태 전이를 분리해 도메인 규칙이 덮어써지지 않도록 설계했습니다.",
+        "통계 집계를 SQL과 애플리케이션 레벨로 나눠 계산 책임과 예외 처리를 분리했습니다."
+      ],
+      "cover_image": ""
+    }
+  ],
+  "troubleshooting": [],
+  "contact": {
+    "title": "연락처",
+    "description": "채용 문의나 협업 제안은 이메일로 보내주세요.",
+    "email": "",
+    "links": [
+      {
+        "label": "GITHUB",
+        "value": "github.com/JOBReady-test",
+        "url": "https://github.com/JOBReady-test"
+      }
+    ]
+  }
+}
